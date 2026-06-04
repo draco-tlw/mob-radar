@@ -2,19 +2,21 @@
 
 ## Overview
 
-This dataset contains 1,462 images of Minecraft mobs (Creeper, Skeleton, Spider, Zombie) annotated with bounding boxes. It is pre-split into Train (80%) and Validation (20%) sets and is formatted specifically for YOLOv8/YOLO11 object detection models.
+This dataset contains 1,972 images of Minecraft mobs annotated with bounding boxes. It is pre-split into Train (80%) and Validation (20%) sets and is formatted for YOLOv8/YOLO11 object detection models.
 
-## Classes
+**Note on Background Images:** Approximately 25% of the dataset (496 images) consists of pure background images with zero bounding boxes. This data is included for hard negative mining to help the model reduce false positive detections.
 
-To optimize the model's bounding-box accuracy and ensure robust detection across various Minecraft biomes and lighting conditions, morphological variants were consolidated into four primary macro-classes.
+## Class Taxonomy (Macro-Classes)
+
+Morphological variants are consolidated into four primary macro-classes to group similar shapes together.
 
 The dataset contains the following distribution:
 
-- **`0: creeper`** (316 instances)
-  - _Includes:_ <img src="assets/Creeper.webp" width="20" align="top"> Standard Creeper
-- **`1: skeleton`** (650 instances)
-  - _Includes:_ <img src="./assets/Skeleton.webp" width="20" align="top"> Standard Skeleton, <img src="./assets/Wither_Skeleton.webp" width="20" align="top"> Wither Skeleton, <img src="./assets/Bogged.png" width="20" align="top"> Bogged, <img src="./assets/Stray.webp" width="20" align="top"> Stray
-- **`2: spider`** (346 instances)
-  - _Includes:_ <img src="./assets/Spider.webp" width="20" align="top"> Standard Spider, <img src="./assets/Cave_Spider.webp" width="20" align="top"> Cave Spider
-- **`3: zombie`** (721 instances)
-  - _Includes:_ <img src="./assets/Zombie.webp" width="20" align="top"> Standard Zombie, <img src="./assets/Drowned.webp" width="20" align="top"> Drowned, <img src="./assets/Husk.webp" width="20" align="top"> Husk
+- **`0: creeper`** (362 instances)
+  - _Includes:_ <img src="assets/Creeper.webp" style="vertical-align: middle; height: 48px"> Standard Creeper
+- **`1: skeleton`** (754 instances)
+  - _Includes:_ <img src="assets/Skeleton.webp" style="vertical-align: middle; height: 48px"> Standard Skeleton, <img src="assets/Wither_Skeleton.webp" style="vertical-align: middle; height: 48px"> Wither Skeleton, <img src="assets/Bogged.png" style="vertical-align: middle; height: 48px"> Bogged, <img src="assets/Stray.webp" style="vertical-align: middle; height: 48px"> Stray
+- **`2: spider`** (439 instances)
+  - _Includes:_ <img src="assets/Spider.webp" style="vertical-align: middle; height: 48px"> Standard Spider, <img src="assets/Cave_Spider.webp" style="vertical-align: middle; height: 48px"> Cave Spider
+- **`3: zombie`** (874 instances)
+  - _Includes:_ <img src="assets/Zombie.webp" style="vertical-align: middle; height: 48px"> Standard Zombie, <img src="assets/Drowned.webp" style="vertical-align: middle; height: 48px"> Drowned, <img src="assets/Husk.webp" style="vertical-align: middle; height: 48px"> Husk
