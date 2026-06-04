@@ -1,0 +1,9 @@
+# Add patterns to ignore here, one per line
+# Example:
+# *.log
+# tmp/
+
+./data/final/minecraft_mobs_yolo/train/images/*.jpg
+./data/final/minecraft_mobs_yolo/train/labels/*.txt
+./data/final/minecraft_mobs_yolo/val/images/*.jpg
+./data/final/minecraft_mobs_yolo/val/labels/*.txt

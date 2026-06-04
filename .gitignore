@@ -1,0 +1,17 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+data/annotations/*
+data/processed/*
+data/raw/*
+
+
+data/final/minecraft_mobs_yolo/train/
+data/final/minecraft_mobs_yolo/val/
