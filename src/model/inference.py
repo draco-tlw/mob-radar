@@ -4,7 +4,7 @@ from ultralytics.models import YOLO
 
 def main():
 
-    model = YOLO("runs/detect/train-3/weights/best.pt")
+    model = YOLO("runs/detect/mob_radar_26n_dv4_1024_f11/weights/best.pt")
 
     cap = cv2.VideoCapture(2)
 
@@ -12,7 +12,7 @@ def main():
         success, frame = cap.read()
 
         if success:
-            results = model.predict(frame, imgsz=1920, conf=0.5, verbose=False)
+            results = model.predict(frame, imgsz=1024, conf=0.5, verbose=False)
 
             annotated_frame = results[0].plot()
 

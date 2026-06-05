@@ -15,5 +15,8 @@ analyze_data:
 train:
 	uv run python -m src.model.train
 
+resume:
+	uv run python -m src.model.resume
+
 inference:
 	uv run python -m src.model.inference

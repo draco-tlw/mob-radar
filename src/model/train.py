@@ -5,29 +5,27 @@ DATASET_DIR = "data/final/minecraft_mobs_yolo/data.yaml"
 HYPERPARAMETERS = {
     "epochs": 200,
     "imgsz": 1024,
+    "rect": True,
     "patience": 30,
     "freeze": 11,
     "optimizer": "AdamW",
-    "lr0": 1e-3,
+    "lr0": 1e-4,
     "batch": 16,
+    "deterministic": False,
 }
+
+# MODEL_PATH = "yolo26n.pt"
+MODEL_PATH = "runs/detect/mob_radar_26n_dv4_1024_f11/weights/best.pt"
 
 
 def main():
 
-    model = YOLO("yolo26n.pt")
+    model = YOLO(MODEL_PATH)
 
     _ = model.train(
         data=DATASET_DIR,
-        lr0=HYPERPARAMETERS["lr0"],
-        imgsz=HYPERPARAMETERS["imgsz"],
-        rect=True,
-        optimizer=HYPERPARAMETERS["optimizer"],
-        batch=HYPERPARAMETERS["batch"],
-        epochs=HYPERPARAMETERS["epochs"],
-        freeze=HYPERPARAMETERS["freeze"],
-        patience=HYPERPARAMETERS["patience"],
-        deterministic=False,
+        name="mob_radar_26n_dv4_1024_f11",
+        **HYPERPARAMETERS,
     )
 
 

@@ -26,7 +26,7 @@ def copy_files(imgs: list[Path], subset: str):
 
 
 def main():
-    logging.info("Starting dataset split & update pipeline...")
+    logging.info("Starting dataset split & sync pipeline...")
 
     for subset in ["train", "val"]:
         for cat in ["images", "labels"]:
@@ -40,7 +40,7 @@ def main():
 
     source_img_names = {img.name for img in source_imgs}
 
-    seen_imgs: set[str] = set()
+    seen_imgs: dict[str, str] = {}  # filename: train/val
     purged_count = 0
 
     for subset in ["train", "val"]:
@@ -50,7 +50,7 @@ def main():
         dst_imgs = dst_image_dir.glob("*.jpg")
         for img in dst_imgs:
             if img.name in source_img_names:
-                seen_imgs.add(img.name)
+                seen_imgs[img.name] = subset
             else:
                 img.unlink()
                 label = dst_label_dir / (img.stem + ".txt")
@@ -59,13 +59,23 @@ def main():
 
     if purged_count > 0:
         logging.warning(
-            f"Cleaned up {purged_count} deleted images/labels before splitting."
+            f"Cleaned up {purged_count} deleted images/labels before processing."
         )
 
+    existing_imgs = [img for img in source_imgs if img.name in seen_imgs]
     new_imgs = [img for img in source_imgs if img.name not in seen_imgs]
 
+    if existing_imgs:
+        logging.info(
+            f"Syncing {len(existing_imgs)} existing images to update labels/brightness while preserving split freeze..."
+        )
+        for img in existing_imgs:
+            target_subset = seen_imgs[img.name]
+            copy_files([img], target_subset)
+        logging.info("Existing images and labels successfully updated!")
+
     if not new_imgs:
-        logging.info("No new images to split. Dataset is already up-to-date!")
+        logging.info("No new images to split. Dataset sync is complete!")
         return
 
     random.seed(42)
@@ -76,18 +86,18 @@ def main():
     train_imgs = new_imgs[:split_index]
     val_imgs = new_imgs[split_index:]
 
-    logging.info(f"Discovered {len(new_imgs)} new images to process.")
+    logging.info(f"Discovered {len(new_imgs)} completely new images to process.")
     logging.info(
-        f"Splitting {len(train_imgs)} images into 'train' ({SPLIT_RATIO*100:.0f}%)..."
+        f"Splitting {len(train_imgs)} new images into 'train' ({SPLIT_RATIO*100:.0f}%)..."
     )
     copy_files(train_imgs, "train")
 
     logging.info(
-        f"Splitting {len(val_imgs)} images into 'val' ({(1-SPLIT_RATIO)*100:.0f}%)..."
+        f"Splitting {len(val_imgs)} new images into 'val' ({(1-SPLIT_RATIO)*100:.0f}%)..."
     )
     copy_files(val_imgs, "val")
 
-    logging.info(f"Splitting complete! Dataset is ready at: {OUTPUT_DIR}")
+    logging.info(f"Pipeline complete! Dataset is perfectly synced at: {OUTPUT_DIR}")
 
 
 if __name__ == "__main__":
