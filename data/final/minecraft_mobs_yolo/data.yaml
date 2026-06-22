@@ -1,5 +1,5 @@
 train: train/images
 val: val/images
 
-nc: 4
-names: ["creeper", "skeleton", "spider", "zombie"]
+nc: 5
+names: ["creeper", "skeleton", "spider", "zombie", "enderman"]

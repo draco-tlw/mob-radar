@@ -15,3 +15,4 @@ data/raw/*
 
 data/final/minecraft_mobs_yolo/train/
 data/final/minecraft_mobs_yolo/val/
+data/final/minecraft_mobs_yolo.zip

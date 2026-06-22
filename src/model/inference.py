@@ -1,10 +1,14 @@
 import cv2
 from ultralytics.models import YOLO
 
+MODEL_PATH = (
+    "runs/detect/mob_radar_v26n_dv5.3_sz1024_f11_lr1e-2_lrf1e-2_cos/weights/best.pt"
+)
+
 
 def main():
 
-    model = YOLO("runs/detect/mob_radar_26n_dv4_1024_f11/weights/best.pt")
+    model = YOLO(MODEL_PATH)
 
     cap = cv2.VideoCapture(2)
 

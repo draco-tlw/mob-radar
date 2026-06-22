@@ -4,7 +4,9 @@ from src.utils.logger import logging, setup_logger
 
 setup_logger()
 
-CHECKPOINT_PATH = "runs/detect/mob_radar_26n_dv4_1024_f11/weights/last.pt"
+CHECKPOINT_PATH = (
+    "runs/detect/mob_radar_v26n_dv5.2_sz1024_f11_lr1e-2_lrf1e-2_cos/weights/last.pt"
+)
 
 
 def main():
