@@ -1,4 +1,4 @@
-.PHONY: preprocess_videos, extract_frames, split_data, analyze_data, train, inference
+.PHONY: preprocess_videos, extract_frames, split_data, analyze_data, train, resume, prototype, deploy
 
 preprocess_videos:
 	uv run python -m src.data.preprocess_videos
@@ -18,5 +18,11 @@ train:
 resume:
 	uv run python -m src.model.resume
 
-inference:
-	uv run python -m src.model.inference
+export_model:
+	uv run python -m src.model.export
+
+prototype:
+	uv run python -m src.inference.torch_predict
+
+deploy:
+	uv run python -m src.inference.onnx_radar

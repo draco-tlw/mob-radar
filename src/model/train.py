@@ -20,7 +20,7 @@ MODEL_VERSION = 26
 MODEL_SIZE = "n"
 MODEL_PATH = f"yolo{MODEL_VERSION}{MODEL_SIZE}.pt"
 
-DATASET_VERSION = 5.3
+DATASET_VERSION = 5
 
 
 def generate_run_name() -> str:

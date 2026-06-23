@@ -2,15 +2,16 @@ import cv2
 from ultralytics.models import YOLO
 
 MODEL_PATH = (
-    "runs/detect/mob_radar_v26n_dv5.3_sz1024_f11_lr1e-2_lrf1e-2_cos/weights/best.pt"
+    "runs/detect/mob_radar_v26n_dv5_sz1024_f11_lr1e-2_lrf1e-2_cos/weights/best.pt"
 )
+CAMERA_I = 2
 
 
 def main():
 
     model = YOLO(MODEL_PATH)
 
-    cap = cv2.VideoCapture(2)
+    cap = cv2.VideoCapture(CAMERA_I)
 
     while cap.isOpened():
         success, frame = cap.read()
