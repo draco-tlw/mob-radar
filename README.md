@@ -8,7 +8,7 @@
 **Mob Radar** is an end-to-end computer vision pipeline that detects and tracks Minecraft mobs in real-time. To ensure ultra-low latency and edge-device compatibility, this project fine-tunes the highly lightweight **YOLO26 Nano (`yolo26n`)** architecture. Coupled with a custom data extraction pipeline and an optimized ONNX inference engine, the model achieves a fluid 60 FPS utilizing GPU execution providers, and a highly viable 20 FPS fallback on standard CPUs.
 
 <p align="center">
-  <video src="assets/final_demo.mp4" autoplay loop muted playsinline width="100%"></video>
+  <video src="https://github.com/user-attachments/assets/57bc4cf5-27f5-47d9-97eb-a94b6528c02a" autoplay loop muted playsinline width="100%"></video>
   <br>
   <i>YOLO26n model dynamically generalizing tracking across diverse game biomes and varying environmental color palettes.</i>
 </p>
